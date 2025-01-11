@@ -1,29 +1,30 @@
+server:
+  port: 8080
+
 spring:
   datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5433/demo
-    username: root
-    password: root
-
-    # connection pool (usage: hikari pool)
-    hikari:
-      connection-timeout: 30_000
-      idle-timeout: 60_000
-      max-lifetime: 1_800_000
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${db.url:jdbc:mysql://localhost:3307/demo?allowPublicKeyRetrieval=true}
+    username: ${db.username:root}
+    password: ${db.password:root}
+    hikari: # Hikari Pool, Connection Pool
+      connectionTimeout: 10000
+      idleTimeout: 600000
       maximum-pool-size: 300
       minimum-idle: 5
+      maxLifetime: 100000
       leak-detection-threshold: 2000
-
   jpa:
     properties:
       hibernate:
         format-sql: true
-        dialect: org.hibernate.dialect.PostgreSQLDialect
+        dialect: org.hibernate.dialect.MySQLDialect
     show-sql: true
     hibernate:
       ddl-auto: none
 
   flyway:
+    enabled: true
     baseline-on-migrate: true
-    locations:
-      - classpath:db/migration/v1_0
+    locations: classpath:/db/migration
+

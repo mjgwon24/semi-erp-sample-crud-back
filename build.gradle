@@ -24,11 +24,12 @@ dependencies {
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 
-	// database
-	runtimeOnly("org.postgresql:postgresql")
+	// MYSQL
+	implementation 'com.mysql:mysql-connector-j:8.0.33'
 
-	// flyway
-	implementation("org.flywaydb:flyway-core:9.22.3")
+	// Flyway
+	implementation 'org.flywaydb:flyway-core:9.1.6'
+	implementation 'org.flywaydb:flyway-mysql:9.1.6'
 
 	// lombok
 	compileOnly("org.projectlombok:lombok")

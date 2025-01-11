@@ -1,0 +1,25 @@
+CREATE TABLE IF NOT EXISTS board (
+    id            BIGINT AUTO_INCREMENT,
+    title         VARCHAR(255),
+    content       TEXT,
+
+    status        VARCHAR(255),
+    like_count    INT DEFAULT 0,
+    dislike_count INT DEFAULT 0,
+    created_at    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at    TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+
+    PRIMARY KEY (id)
+    ) ENGINE=InnoDB;
+
+-- 테이블 코멘트
+ALTER TABLE board COMMENT = '게시판';
+
+-- 컬럼 코멘트
+ALTER TABLE board MODIFY title VARCHAR(255) COMMENT '글 제목';
+ALTER TABLE board MODIFY content TEXT COMMENT '내용';
+ALTER TABLE board MODIFY status VARCHAR(255) COMMENT '상태';
+ALTER TABLE board MODIFY like_count INT DEFAULT 0 COMMENT '좋아요 수';
+ALTER TABLE board MODIFY dislike_count INT DEFAULT 0 COMMENT '싫어요 수';
+ALTER TABLE board MODIFY created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '생성일';
+ALTER TABLE board MODIFY updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '마지막 수정일';
