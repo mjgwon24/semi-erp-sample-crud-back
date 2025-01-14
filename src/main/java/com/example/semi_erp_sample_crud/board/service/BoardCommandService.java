@@ -1,6 +1,7 @@
 package com.example.semi_erp_sample_crud.board.service;
 
 import com.example.semi_erp_sample_crud.board.controller.dto.BoardCommandDto.BoardCreateRequest;
+import com.example.semi_erp_sample_crud.board.controller.dto.BoardCommandDto.BoardUpdateRequest;
 import com.example.semi_erp_sample_crud.board.entity.Board;
 import com.example.semi_erp_sample_crud.board.entity.type.BoardStatus;
 import com.example.semi_erp_sample_crud.board.mapper.BoardDtoMapper;
@@ -24,5 +25,19 @@ public class BoardCommandService implements BoardCreateUseCase {
         Board board = mapper.toEntity(request, BoardStatus.ACTIVE, now, now);
 
         return boardRepository.save(board);
+    }
+
+    @Override
+    public Board update(BoardUpdateRequest request) {
+        // 기존 엔티티 조회
+        Board existingBoard = boardRepository.findById(request.id())
+                .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 존재하지 않습니다."));
+
+        // 현재 시간 설정
+        Instant now = Instant.now();
+        mapper.updateEntity(existingBoard, request, BoardStatus.ACTIVE, now);
+
+        // 변경사항 저장
+        return boardRepository.save(existingBoard);
     }
 }

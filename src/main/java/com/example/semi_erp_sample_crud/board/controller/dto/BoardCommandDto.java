@@ -23,4 +23,16 @@ public final class BoardCommandDto {
     public record BoardCreateResponse(
             Board board
     ) {}
+
+    public record BoardUpdateRequest(
+            Long id,
+            @NotBlank(message = "제목을 입력해주세요.")
+            @Size(min = 3, message = "제목은 세 글자 이상 입력하세요.")
+            @Size(max = 50, message = "제목은 최대 50글자입니다.")
+            String title,
+
+            @NotBlank(message = "본문을 입력해주세요.")
+            @Size(min = 3, message = "본문은 세 글자 이상 입력해주세요.")
+            String content
+    ) {}
 }
