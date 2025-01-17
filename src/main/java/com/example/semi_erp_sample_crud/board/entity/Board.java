@@ -5,10 +5,7 @@ import com.example.semi_erp_sample_crud.common.jpa.support.BaseEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.Instant;
 
@@ -17,6 +14,7 @@ import java.time.Instant;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@Setter
 public class Board extends BaseEntity {
     private String title;
     private String content;
@@ -26,4 +24,5 @@ public class Board extends BaseEntity {
     private int dislikeCount;
     private Instant createdAt;
     private Instant updatedAt;
+
 }

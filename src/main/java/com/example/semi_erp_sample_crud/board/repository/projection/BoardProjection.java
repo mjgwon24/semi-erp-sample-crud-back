@@ -21,4 +21,11 @@ public class BoardProjection {
             Instant createdAt,
             Instant updatedAt
     ) {}
+    @Builder
+    public record BoardSimpleProjection(
+            Long id,
+            String title,
+            String content,
+            Instant updatedAt
+    ) {}
 }
