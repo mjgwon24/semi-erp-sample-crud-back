@@ -7,6 +7,8 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Builder;
 
+import java.util.List;
+
 public final class BoardCommandDto {
     private BoardCommandDto() {}
 
@@ -35,6 +37,21 @@ public final class BoardCommandDto {
     public record BoardDeleteResponse(
             BoardStatus status
     ) {}
+    @Builder
+    public record ReadBoardListByIdRequest(
+            Long startId,
+            Long endId
+    ){}
+    @Builder
+    public record ReadBoardListByDateRequest(
+            Long startDate,
+            Long endDate
+    ){}
+
+    @Builder
+    public record ReadBoardListResponse(
+            List<BoardSimpleProjection> boardList
+    ){}
 
     //BoardReadRequest는 RequestParam으로 받아오기 때문에 DTO 없음
     @Builder
