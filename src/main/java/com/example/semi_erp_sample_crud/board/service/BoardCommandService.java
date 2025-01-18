@@ -25,4 +25,6 @@ public class BoardCommandService implements BoardCreateUseCase {
 
         return boardRepository.save(board);
     }
+
+
 }

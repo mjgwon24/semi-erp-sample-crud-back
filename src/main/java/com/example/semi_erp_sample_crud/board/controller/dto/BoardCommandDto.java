@@ -1,6 +1,7 @@
 package com.example.semi_erp_sample_crud.board.controller.dto;
 
 import com.example.semi_erp_sample_crud.board.entity.Board;
+import com.example.semi_erp_sample_crud.board.entity.type.BoardStatus;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Builder;
