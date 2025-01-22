@@ -26,4 +26,12 @@ public final class BoardQueryDto {
             String updatedAt            // instant - string 변환// entity to dto
 
     ) {}
+
+    @Builder
+    public record BoardListResponse(
+            Long id,
+            String title,
+            String content
+    ) {}
+
 }
